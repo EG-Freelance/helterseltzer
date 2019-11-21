@@ -15,29 +15,29 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input type="text" class="datepicker" value="<%= @post.date %>">
+          <input name="post[date]" type="text" class="datepicker" value="<%= @post.date %>">
           <label for="date" class="<%= 'active' if @post.date %>">Date</label>
         </div>
         <div class="input-field col s6">
-          <input id="game" type="text" class="validate" value="<%= @post.game %>">
+          <input name="post[game]" id="game" type="text" class="validate" value="<%= @post.game %>">
           <label for="game" class="<%= 'active' if @post.game %>">Opponent</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="summary" class="materialize-textarea" value="<%= @post.summary %>"></textarea>
+          <textarea name="post[summary]" id="summary" class="materialize-textarea" value="<%= @post.summary %>"></textarea>
           <label for="summary" class="<%= 'active' if @post.summary %>">Game Summary</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="product" type="text" class="validate" value="<%= @post.product %>">
+          <input name="post[product]" id="product" type="text" class="validate" value="<%= @post.product %>">
           <label for="product" class="<%= 'active' if @post.product %>">Seltzer</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="review" class="materialize-textarea" value="<%= @post.review %>"></textarea>
+          <textarea name="post[review]" id="review" class="materialize-textarea" value="<%= @post.review %>"></textarea>
           <label for="review" class="<%= 'active' if @post.review %>">Seltzer Review</label>
         </div>
       </div>
