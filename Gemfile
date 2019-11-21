@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'materialize-sass'
 
 group :production do
+  gem 'pg'
   gem 'thin'
   gem 'rails_12factor'
 end
