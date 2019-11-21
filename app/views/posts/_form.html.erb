@@ -1,0 +1,59 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" class="datepicker" value="<%= @post.date %>">
+          <label for="date" class="<%= 'active' if @post.date %>">Date</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="game" type="text" class="validate" value="<%= @post.game %>">
+          <label for="game" class="<%= 'active' if @post.game %>">Opponent</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="summary" class="materialize-textarea" value="<%= @post.summary %>"></textarea>
+          <label for="summary" class="<%= 'active' if @post.summary %>">Game Summary</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="product" type="text" class="validate" value="<%= @post.product %>">
+          <label for="product" class="<%= 'active' if @post.product %>">Seltzer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="review" class="materialize-textarea" value="<%= @post.review %>"></textarea>
+          <label for="review" class="<%= 'active' if @post.review %>">Seltzer Review</label>
+        </div>
+      </div>
+      <div class="actions waves-effect waves-light btn" style="margin-left: 25px">
+        <%= f.submit %>
+      </div>
+    </form>
+  </div>
+
+  
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+    $('#summary').val('<%= @post.summary %>');
+    $('#review').val('<%= @post.review %>');
+  });
+</script>

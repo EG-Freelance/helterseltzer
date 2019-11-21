@@ -1,0 +1,57 @@
+<div class="carousel carousel-slider center">
+  <div class="carousel-item red white-text" id="img-one" href="#one!">
+    <%= image_tag('ck1.jfif') %>
+  </div>
+  <div class="carousel-item amber white-text" id="img-two" href="#two!">
+    <%= image_tag('ae1.jpg') %>
+  </div>
+  <div class="carousel-item green white-text" id="img-three" href="#three!">
+    <%= image_tag('rg1.jpg') %>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Ryan's Reviews</h1>
+
+  <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"><%= post.game %></span>
+            <p><b>Game Summary:</b> <%= post.summary %></p>
+            <hr>
+            <p><b>Seltzer:</b> <%= post.product %></p>
+            <p><b>Review:</b> <%= post.review %></p>
+          </div>
+          <div class="card-action">
+            <%= link_to "EDIT POST", edit_post_path(post) %>
+            <%= link_to "REMOVE POST", post_path(post), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <br>
+
+  <%= link_to 'NEW POST', new_post_path, :class => "waves-effect waves-light btn" %>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      fullWidth: true,
+      indicators: true,
+      duration: 500
+    });
+
+    var elem = document.querySelector('.carousel');
+    var instance = M.Carousel.getInstance(elem);
+
+    setInterval(function(){
+      instance.next();
+    }, 7000);
+  });
+</script>
