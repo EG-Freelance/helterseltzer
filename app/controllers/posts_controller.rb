@@ -74,6 +74,6 @@ class PostsController < ApplicationController
     end
 
     def set_games
-      @games = Post.all.sort_by(&:date).reverse
+      @games = Post.all
     end
 end
