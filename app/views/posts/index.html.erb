@@ -25,7 +25,12 @@
             <p><b>Game Summary:</b> <%= post.summary.html_safe %></p>
             <hr>
             <p><b>Seltzer:</b> <%= post.product.html_safe %></p>
-            <p><b>Review:</b> <%= post.review.html_safe %></p>
+            <p><b>Review:</b> <%= post.review.html_safe %></p><br>
+            <div class="images">
+              <% post.images.each do |img| %>
+                <img class="img" src="<%= img.ext_url %>" />
+              <% end %>
+            </div>
           </div>
           <div class="card-action">
             <%= link_to "EDIT POST", edit_post_path(post) %>

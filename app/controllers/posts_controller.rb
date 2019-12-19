@@ -29,6 +29,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        if !params[:image][:image].blank?
+          # image = @post.images.new(params[:image][:image]).first_or_create
+          @post.add_image(params[:image][:image])
+        end
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -70,7 +74,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:date, :game, :summary, :product, :review)
+      params.require(:post).permit(:date, :game, :summary, :product, :review, image_attributes: [:image, :id])
     end
 
     def set_games
