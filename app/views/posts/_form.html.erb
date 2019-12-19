@@ -59,8 +59,14 @@
       </div>
     </form>
   </div>
-
-  
+<% end %>
+<% if @post.images.count > 0 %>
+  <p>Current attached photos:</p>
+  <% @post.images.each do |img| %>
+    <%= link_to destroy_img_path(@post.id, img.id), :method => :delete  do %>
+      <img src="<%= img.ext_url %>" style="max-width: 500px" />
+    <% end %>
+  <% end %>
 <% end %>
 
 <script>

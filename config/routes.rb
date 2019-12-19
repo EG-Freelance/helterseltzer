@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :posts, :except => :show
 
   root :to => 'posts#index'
+  delete 'posts/:id/images/:img_id' => 'posts#destroy_img', :as => "destroy_img"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
