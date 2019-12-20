@@ -29,8 +29,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        if !params[:image][:image].blank?
-          # image = @post.images.new(params[:image][:image]).first_or_create
+        if !params[:image].try(:[], :image).blank?
           @post.add_image(params[:image][:image])
         end
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
@@ -47,8 +46,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        if !params[:image][:image].blank?
-          # image = @post.images.new(params[:image][:image]).first_or_create
+        if !params[:image].try(:[], :image).blank?
           @post.add_image(params[:image][:image])
         end
         format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
